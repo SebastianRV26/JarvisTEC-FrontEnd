@@ -1,9 +1,10 @@
 import React from 'react';
 import Webcam from "react-webcam";
+import { FindSimilar } from '../../faceID/FaceApi';
 
 const videoConstraints = {
-    width: 1280,
-    height: 720,
+    width: 1920,
+    height: 1080,
     facingMode: "user"
 };
 
@@ -13,6 +14,9 @@ const WebcamCapture = () => {
         () => {
             const imageSrc = webcamRef.current.getScreenshot();
             console.log(imageSrc);
+            fetch(imageSrc)
+            .then(res => res.blob())
+            .then(res => FindSimilar(res))
         },
         [webcamRef]
     );
