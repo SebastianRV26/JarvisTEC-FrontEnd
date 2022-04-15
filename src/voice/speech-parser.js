@@ -1,5 +1,27 @@
 const modelsData = [
   {
+    name: "bicicleta",
+    endpoint: "models/RLMinR/1/",
+    onResponse: (response, speak) => {
+      const price = parseFloat(response.data.data).toFixed(2);
+      speak({
+        text: `La tarifa de un viaje en bicleta con los datos dados es de ${price} dólares`,
+      });
+      return "$" + price;
+    },
+  },
+  {
+    name: "carro",
+    endpoint: "models/RLMinR/2/",
+    onResponse: (response, speak) => {
+      const price = parseFloat(response.data.data).toFixed(2);
+      speak({
+        text: `El precio de un carro con esos datos es de ${price} dólares`,
+      });
+      return "$" + price;
+    },
+  },
+  {
     name: "aguacate",
     endpoint: "models/pythonModel/2/",
     onResponse: (response, speak) => {
@@ -7,7 +29,7 @@ const modelsData = [
       speak({
         text: `El precio de un aguacate con esos datos es de ${price}`,
       });
-      return price;
+      return "$" + price;
     },
   },
 ];

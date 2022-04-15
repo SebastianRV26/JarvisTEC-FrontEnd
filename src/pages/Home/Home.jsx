@@ -52,15 +52,9 @@ const Home = () => {
   }, [isRecording]);
 
   const predict = (endpoint, params) => {
-    axios
-      .get(env.BACKEND_URL + endpoint + params)
-      .then(function (response) {
-        console.log(response);
-        setResult(action.onResponse(response, speak));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    axios.get(env.BACKEND_URL + endpoint + params).then(function (response) {
+      setResult(action.onResponse(response, speak));
+    });
   };
 
   const handleModelTextSubmit = (text) => {
