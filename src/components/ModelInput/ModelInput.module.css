@@ -1,0 +1,44 @@
+.form {
+  margin: 16px 16px;
+}
+
+.form h2 {
+  display: inline;
+}
+
+.form input {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.5;
+  width: calc(100% - 150px);
+  padding: 6px 4px;
+  border: 1px solid var(--borderFormEls);
+  color: white;
+  background: #141117;
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.form button {
+  display: inline;
+  margin: auto;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.5;
+  padding: 6px 10px;
+  border: 1px solid var(--borderFormEls);
+  color: white;
+  background: #141117;
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.form input:focus,
+.form button:enabled:hover,
+.form button:focus {
+  background: #3b3242;
+}
+
+.form input:focus {
+  transform: scale(1.02);
+}

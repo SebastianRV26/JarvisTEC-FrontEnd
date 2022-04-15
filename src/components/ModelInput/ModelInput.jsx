@@ -1,4 +1,5 @@
 import { useState } from "react";
+import classes from "./ModelInput.module.css";
 
 const ModelInput = (props) => {
   const [text, setText] = useState("");
@@ -9,13 +10,14 @@ const ModelInput = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
+      <h2>Data: </h2>{" "}
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
       ></input>
-      <button type="submit">Enviar</button>
+      <button type="submit">Send</button>
     </form>
   );
 };

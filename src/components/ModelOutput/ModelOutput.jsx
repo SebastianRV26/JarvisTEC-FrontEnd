@@ -1,5 +1,11 @@
+import classes from "./ModelOutput.module.css";
+
 const ModelOutput = (props) => {
-  return <div>{props.result}</div>;
+  return (
+    <div className={classes.output}>
+      <h2>Result: {props.result}</h2>
+    </div>
+  );
 };
 
 export default ModelOutput;

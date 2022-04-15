@@ -1,33 +1,56 @@
+.container {
+  height: 100vh;
+  background-color: #141117;
+  position: relative;
+  align-items: center;
+  display: grid;
+  color: #ffffff;
+}
+
+.jarvisContainer {
+  position: relative;
+  background-color: #201c26;
+  padding: 10px;
+  height: 85%;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.statusText {
+  text-align: center;
+}
+
+.voiceText {
+  margin: 16px;
+}
+
 .recButton {
-  width: 35px;
-  height: 35px;
+  position: relative;
+  width: 96px;
+  height: 96px;
   font-size: 0;
-  background-color: red;
+  background-color: crimson;
   border: 0;
-  border-radius: 35px;
-  margin: 18px;
+  border-radius: 50%;
   outline: none;
+  display: table;
+  margin: auto;
+  color: white;
 }
 
-.recButton:hover {
-  background-color: darkred;
+.recButton:hover:before {
+  transform: scale(1.15);
 }
 
-.rec {
-  animation-name: pulse;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, 0.3);
-  }
-  65% {
-    box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, 0.3);
-  }
-  90% {
-    box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, 0);
-  }
+.recButton:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid crimson;
+  border-radius: 100%;
+  transition: all 160ms ease-in-out;
 }
