@@ -1,0 +1,52 @@
+.container {
+  height: 100vh;
+  position: relative;
+  align-items: center;
+  display: grid;
+  color: #ffffff;
+}
+
+.cameraContainer {
+  position: relative;
+  margin: 0 auto;
+  z-index: 0;
+}
+
+.captureContainer {
+  position: absolute;
+  bottom: 16px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.captureContainer button {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  font-size: 0;
+  background-color: crimson;
+  border: 0;
+  border-radius: 50%;
+  outline: none;
+  display: table;
+  margin: auto;
+  color: white;
+}
+
+.captureContainer button:hover:before {
+  transform: scale(1.15);
+}
+
+.captureContainer button:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid crimson;
+  border-radius: 100%;
+  transition: all 160ms ease-in-out;
+}
