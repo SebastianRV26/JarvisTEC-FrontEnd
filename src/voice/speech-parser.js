@@ -32,6 +32,53 @@ const modelsData = [
       return "$" + price;
     },
   },
+  {
+    name: "masa",
+    endpoint: "models/pythonModel/4/",
+    onResponse: (response, speak) => {
+      const bmi = parseFloat(response.data.data).toFixed(2);
+      speak({
+        text: `El índice de masa corporal de ese paciente es de: ${bmi}`,
+      });
+      return bmi;
+    },
+  },
+  {
+    name: "hepatitis",
+    endpoint: "models/pythonModel/5/",
+    onResponse: (response, speak) => {
+      const hepatitis = parseInt(response.data.data);
+      let hepatitisName;
+      if (hepatitis === 1) {
+        hepatitisName = "Hepatitis";
+      } else if (hepatitis === 2) {
+        hepatitisName = "Fibrosis";
+      } else {
+        hepatitisName = "Cirrosis";
+      }
+      speak({
+        text: `El tipo de hepatitis de ese paciente es: ${hepatitisName}`,
+      });
+      return hepatitisName;
+    },
+  },
+  {
+    name: "derrame",
+    endpoint: "models/pythonModel/6/",
+    onResponse: (response, speak) => {
+      const value = parseInt(response.data.data);
+      if (value === 0) {
+        speak({
+          text: `El paciente no tuvo un derrame cerebral`,
+        });
+        return "No tuvo derrame";
+      }
+      speak({
+        text: `El paciente tuvo un derrame cerebral`,
+      });
+      return "Tuvo derrame";
+    },
+  },
 ];
 
 export const getActionFromText = (text) => {
