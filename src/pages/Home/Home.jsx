@@ -53,6 +53,12 @@ const Home = () => {
 
   const predict = (endpoint, params) => {
     axios.get(env.BACKEND_URL + endpoint + params).then(function (response) {
+      if(response.data.code === 400){
+        speak({
+          text: `${response.data.data}`,
+        });
+        return;
+      }
       setResult(action.onResponse(response, speak));
     });
   };
