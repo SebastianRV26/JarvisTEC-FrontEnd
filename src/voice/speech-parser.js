@@ -6,7 +6,7 @@ const modelsData = [
     onResponse: (response, speak) => {
       const price = parseFloat(response.data.data).toFixed(2);
       speak({
-        text: `La tarifa de un viaje en bicleta con los datos dados es de ${price} dólares`,
+        text: `La tarifa de un viaje en bicicleta con los datos dados es de ${price} dólares`,
       });
       return "$" + price;
     },
@@ -59,33 +59,33 @@ const modelsData = [
     },
   },
   {
-    name: "seguros",
+    name: "seguro",
     endpoint: "models/RLMinR/4/",
     columns: ["bmi"],
     onResponse: (response, speak) => {
       const price = parseFloat(response.data.data).toFixed(2);
       speak({
-        text: `El precio del seguro de la persona a asegurar según los datos insertados es de ${price}`,
+        text: `El precio del seguro de la persona según los datos insertados es de ${price}`,
       });
       return "$" + price;
     },
   },
   {
-    name: "telefonica",
+    name: "telefónica",
     endpoint: "models/pythonModel/1/",
-    colums: ["tenure", "MonthlyCharges", "TotalCharges", "TechSupport"],
+    columns: ["tenure", "MonthlyCharges", "TotalCharges", "TechSupport"],
     onResponse: (response, speak) => {
       const condicion = parseFloat(response.data.data).toFixed(2);
       if (condicion === 0) {
         speak({
           text: `El usuario no se va cambiar de servicio`,
         });
-      } else {
-        speak({
-          text: `El usuario se va cambiar de servicio probablemente`,
-        });
+        return "No se va a cambiar";
       }
-      return condicion;
+      speak({
+        text: `El usuario se va cambiar de servicio probablemente`,
+      });
+      return "Se va a cambiar";
     },
   },
   {
@@ -152,7 +152,7 @@ const modelsData = [
   },
   {
     name: "hepatitis",
-    endpoint: "models/pythonModel/8/",
+    endpoint: "models/pythonModel/7/",
     columns: [
       "Sex",
       "Age",
@@ -185,7 +185,7 @@ const modelsData = [
   },
   {
     name: "masa",
-    endpoint: "models/pythonModel/7/",
+    endpoint: "models/pythonModel/6/",
     columns: ["Density", "Chest", "Abdomen"],
     onResponse: (response, speak) => {
       const bmi = parseFloat(response.data.data).toFixed(2);
@@ -197,7 +197,7 @@ const modelsData = [
   },
   {
     name: "derrame",
-    endpoint: "models/pythonModel/9/",
+    endpoint: "models/pythonModel/8/",
     columns: [
       "gender",
       "age",
