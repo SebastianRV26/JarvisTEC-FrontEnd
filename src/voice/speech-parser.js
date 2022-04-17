@@ -34,7 +34,7 @@ const modelsData = [
   },
   {
     name: "masa",
-    endpoint: "models/pythonModel/4/",
+    endpoint: "models/pythonModel/7/",
     onResponse: (response, speak) => {
       const bmi = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -45,7 +45,7 @@ const modelsData = [
   },
   {
     name: "hepatitis",
-    endpoint: "models/pythonModel/5/",
+    endpoint: "models/pythonModel/8/",
     onResponse: (response, speak) => {
       const hepatitis = parseInt(response.data.data);
       let hepatitisName;
@@ -64,7 +64,7 @@ const modelsData = [
   },
   {
     name: "derrame",
-    endpoint: "models/pythonModel/6/",
+    endpoint: "models/pythonModel/9/",
     onResponse: (response, speak) => {
       const value = parseInt(response.data.data);
       if (value === 0) {
