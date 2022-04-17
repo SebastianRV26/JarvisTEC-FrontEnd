@@ -11,7 +11,8 @@ const ModelInput = (props) => {
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <h2>Data: </h2>{" "}
+      <h2>Columns: {props.columns.join(", ")}</h2>
+      <h2 className={classes.dataTitle}>Data: </h2>{" "}
       <input
         type="text"
         value={text}

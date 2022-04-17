@@ -2,6 +2,7 @@ const modelsData = [
   {
     name: "bicicleta",
     endpoint: "models/RLMinR/1/",
+    columns: ["distance", "driver", "tip"],
     onResponse: (response, speak) => {
       const price = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -13,6 +14,7 @@ const modelsData = [
   {
     name: "carro",
     endpoint: "models/RLMinR/2/",
+    columns: ["selling_price", "year"],
     onResponse: (response, speak) => {
       const price = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -24,6 +26,18 @@ const modelsData = [
   {
     name: "aguacate",
     endpoint: "models/pythonModel/2/",
+    columns: [
+      "Total Volume",
+      "4046",
+      "4225",
+      "4770",
+      "Total Bags",
+      "Small Bags",
+      "Large Bags",
+      "XLarge Bags",
+      "type",
+      "year",
+    ],
     onResponse: (response, speak) => {
       const price = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -35,17 +49,19 @@ const modelsData = [
   {
     name: "clima",
     endpoint: "models/RLMinR/3/",
+    columns: ["maxTemp", "Temp9am"],
     onResponse: (response, speak) => {
       const temp = parseFloat(response.data.data).toFixed(2);
       speak({
         text: `La temperatura minima según los datos insertados es de ${temp}`,
       });
-      return "°C" + temp;
+      return temp + "°C";
     },
   },
   {
     name: "seguros",
     endpoint: "models/RLMinR/4/",
+    columns: ["bmi"],
     onResponse: (response, speak) => {
       const price = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -57,13 +73,14 @@ const modelsData = [
   {
     name: "telefonica",
     endpoint: "models/pythonModel/1/",
+    colums: ["tenure", "MonthlyCharges", "TotalCharges", "TechSupport"],
     onResponse: (response, speak) => {
       const condicion = parseFloat(response.data.data).toFixed(2);
-      if(condicion === 0){
+      if (condicion === 0) {
         speak({
           text: `El usuario no se va cambiar de servicio`,
         });
-      }else{
+      } else {
         speak({
           text: `El usuario se va cambiar de servicio probablemente`,
         });
@@ -74,6 +91,20 @@ const modelsData = [
   {
     name: "vino",
     endpoint: "models/pythonModel/3/",
+    columns: [
+      "fixed acidity",
+      "volatile acidity",
+      "citric acid",
+      "residual sugar",
+      "chlorides",
+      "free sulfur dioxide",
+      "total sulfur dioxide",
+      "density",
+      "pH",
+      "sulphates",
+      "alcohol",
+      "white",
+    ],
     onResponse: (response, speak) => {
       const calidad = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -85,6 +116,19 @@ const modelsData = [
   {
     name: "inventario",
     endpoint: "models/pythonModel/4/",
+    columns: [
+      "store",
+      "item",
+      "year",
+      "month",
+      "day",
+      "week",
+      "weekofyear",
+      "dayofweek",
+      "weekday",
+      "dayofyear",
+      "quarter",
+    ],
     onResponse: (response, speak) => {
       const cantidadInventario = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -96,6 +140,7 @@ const modelsData = [
   {
     name: "acciones",
     endpoint: "models/pythonModel/5/",
+    columns: ["Numbers"],
     onResponse: (response, speak) => {
       const porcentajeAcciones = parseFloat(response.data.data).toFixed(2);
       console.log(response.data.data);
@@ -103,11 +148,25 @@ const modelsData = [
         text: `El precio de las acciones de S&P500stock van a rondar entre ${porcentajeAcciones} del precio original según la cantidad de acciones vendidas`,
       });
       return porcentajeAcciones + "%";
-    }
+    },
   },
   {
     name: "hepatitis",
     endpoint: "models/pythonModel/8/",
+    columns: [
+      "Sex",
+      "Age",
+      "ALB",
+      "ALP",
+      "ALT",
+      "AST",
+      "BIL",
+      "CHE",
+      "CHOL",
+      "CREA",
+      "GGT",
+      "PROT",
+    ],
     onResponse: (response, speak) => {
       const hepatitis = parseInt(response.data.data);
       let hepatitisName;
@@ -122,11 +181,12 @@ const modelsData = [
         text: `El tipo de hepatitis de ese paciente es: ${hepatitisName}`,
       });
       return hepatitisName;
-    }
+    },
   },
   {
     name: "masa",
     endpoint: "models/pythonModel/7/",
+    columns: ["Density", "Chest", "Abdomen"],
     onResponse: (response, speak) => {
       const bmi = parseFloat(response.data.data).toFixed(2);
       speak({
@@ -138,6 +198,18 @@ const modelsData = [
   {
     name: "derrame",
     endpoint: "models/pythonModel/9/",
+    columns: [
+      "gender",
+      "age",
+      "hypertension",
+      "heart_disease",
+      "ever_married",
+      "work_type",
+      "Residence_type",
+      "avg_glucose_level",
+      "bmi",
+      "smoking_status",
+    ],
     onResponse: (response, speak) => {
       const value = parseInt(response.data.data);
       if (value === 0) {

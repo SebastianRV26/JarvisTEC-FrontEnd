@@ -53,7 +53,7 @@ const Home = () => {
 
   const predict = (endpoint, params) => {
     axios.get(env.BACKEND_URL + endpoint + params).then(function (response) {
-      if(response.data.code === 400){
+      if (response.data.code === 400) {
         speak({
           text: `${response.data.data}`,
         });
@@ -100,7 +100,9 @@ const Home = () => {
             )}
           </h2>
         </div>
-        {action && <ModelInput onSubmit={handleModelTextSubmit} />}
+        {action && (
+          <ModelInput onSubmit={handleModelTextSubmit} columns={action.columns} />
+        )}
         {result && <ModelOutput result={result} />}
       </div>
     </div>
