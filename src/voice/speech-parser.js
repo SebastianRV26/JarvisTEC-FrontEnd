@@ -103,6 +103,53 @@ const modelsData = [
         text: `El precio de las acciones de S&P500stock van a rondar entre ${porcentajeAcciones} del precio original según la cantidad de acciones vendidas`,
       });
       return porcentajeAcciones + "%";
+    }
+  },
+  {
+    name: "hepatitis",
+    endpoint: "models/pythonModel/8/",
+    onResponse: (response, speak) => {
+      const hepatitis = parseInt(response.data.data);
+      let hepatitisName;
+      if (hepatitis === 1) {
+        hepatitisName = "Hepatitis";
+      } else if (hepatitis === 2) {
+        hepatitisName = "Fibrosis";
+      } else {
+        hepatitisName = "Cirrosis";
+      }
+      speak({
+        text: `El tipo de hepatitis de ese paciente es: ${hepatitisName}`,
+      });
+      return hepatitisName;
+    }
+  },
+  {
+    name: "masa",
+    endpoint: "models/pythonModel/7/",
+    onResponse: (response, speak) => {
+      const bmi = parseFloat(response.data.data).toFixed(2);
+      speak({
+        text: `El índice de masa corporal de ese paciente es de: ${bmi}`,
+      });
+      return bmi;
+    },
+  },
+  {
+    name: "derrame",
+    endpoint: "models/pythonModel/9/",
+    onResponse: (response, speak) => {
+      const value = parseInt(response.data.data);
+      if (value === 0) {
+        speak({
+          text: `El paciente no tuvo un derrame cerebral`,
+        });
+        return "No tuvo derrame";
+      }
+      speak({
+        text: `El paciente tuvo un derrame cerebral`,
+      });
+      return "Tuvo derrame";
     },
   },
 ];
