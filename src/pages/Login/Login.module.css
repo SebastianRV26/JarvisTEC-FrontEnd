@@ -43,6 +43,10 @@
   background-color: crimson;
 }
 
+.recButton:focus {
+  background-color: crimson !important;
+}
+
 .captureContainer button:hover:before {
   transform: scale(1.15);
 }

@@ -1,6 +1,4 @@
 import classes from "./Jarvis.module.css";
-
-import useSpeechToText from "react-hook-speech-to-text";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect, useState } from "react";
 import { getActionFromText } from "../../voice/speech-parser";
@@ -10,47 +8,50 @@ import ModelInput from "../../components/ModelInput/ModelInput";
 import ModelOutput from "../../components/ModelOutput/ModelOutput";
 import AudioAnimation from "../../components/AudioAnimation/AudioAnimation";
 import Card from "../../components/Card/Card";
+import { useReactMediaRecorder } from "react-media-recorder";
+
+const isRecording = (status) => {
+  return status === "recording";
+};
 
 const Jarvis = () => {
-  const {
-    error,
-    interimResult,
-    isRecording,
-    results,
-    startSpeechToText,
-    stopSpeechToText,
-  } = useSpeechToText({
-    continuous: true,
-    useLegacyResults: false,
-    // No quiero meter mi tarjeta en google cloud pero así se puede hacer
-    // funcionar en otros navegadores con una API KEY de google cloud
-    /*crossBrowser: true,
-    googleApiKey: YOUR_GOOGLE_CLOUD_API_KEY_HERE,*/
-  });
+  const { status, startRecording, stopRecording, mediaBlobUrl } =
+    useReactMediaRecorder({ audio: true });
   const { speak, speaking } = useSpeechSynthesis();
   const [action, setAction] = useState();
   const [result, setResult] = useState();
+  const [speechText, setSpeechText] = useState("");
 
   useEffect(() => {
-    if (!isRecording) {
-      if (results[results.length - 1]) {
-        const { response, action } = getActionFromText(
-          results[results.length - 1].transcript
-        );
-        if (response) {
-          speak({ text: response });
-        }
-        if (action) {
-          if (action.type === "model") {
-            setAction(action);
+    if (mediaBlobUrl) {
+      fetch(mediaBlobUrl)
+        .then((res) => res.blob())
+        .then((res) => {
+          const formData = new FormData();
+          formData.append("data", res);
+          return axios.post(env.BACKEND_URL + "models/voice/", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+        })
+        .then((res) => {
+          setSpeechText(res.data.data);
+          const { response, action } = getActionFromText(res.data.data);
+          if (response) {
+            speak({ text: response });
           }
-        } else {
-          setAction(undefined);
-          setResult(undefined);
-        }
-      }
+          if (action) {
+            if (action.type === "model") {
+              setAction(action);
+            }
+          } else {
+            setAction(undefined);
+            setResult(undefined);
+          }
+        });
     }
-  }, [isRecording]);
+  }, [mediaBlobUrl]);
 
   const predict = (endpoint, params) => {
     axios.get(env.BACKEND_URL + endpoint + params).then(function (response) {
@@ -68,17 +69,18 @@ const Jarvis = () => {
     predict(action.endpoint, text);
   };
 
-  if (error) return <p>Web Speech API is not available in this browser. F</p>;
-
   return (
     <Card>
       <h1 className={classes.statusText}>
-        Jarvis: {speaking ? "speaking" : isRecording ? "hearing" : "on hold"}
+        Jarvis:{" "}
+        {speaking ? "speaking" : isRecording(status) ? "hearing" : "on hold"}
       </h1>
       <AudioAnimation />
       <button
-        className={`${classes.recButton} ${isRecording ? classes.rec : ""}`}
-        onClick={isRecording ? stopSpeechToText : startSpeechToText}
+        className={`${classes.recButton} ${
+          isRecording(status) ? classes.rec : ""
+        }`}
+        onClick={isRecording(status) ? stopRecording : startRecording}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -93,12 +95,7 @@ const Jarvis = () => {
         </svg>
       </button>
       <div>
-        <h2 className={classes.voiceText}>
-          Text: {interimResult && <>{interimResult}</>}
-          {results[results.length - 1] && !interimResult && (
-            <>{results[results.length - 1].transcript}</>
-          )}
-        </h2>
+        <h2 className={classes.voiceText}>Text: {speechText}</h2>
       </div>
       {action && (
         <ModelInput onSubmit={handleModelTextSubmit} columns={action.columns} />
