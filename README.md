@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# JarvisTEC - FrontEnd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+JarvisTEC - BackEnd [aquí](https://github.com/SebastianRV26/JarvisTEC-BackEnd)
 
-## Available Scripts
+## UI
 
-In the project directory, you can run:
+### Login:
 
-### `npm start`
+Utilizando Microsoft Azure:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![camera](images/camera.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Asistente de voz:
 
-### `npm test`
+Utilizando Speach to Text:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![voice_asistant](images/VoiceAsistant.png)
 
-### `npm run build`
+## Datos de prueba
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```txt
+1. Predecir la tarifa de viajes en bicicleta: 
+distance=0.7,driver.AF8.tip=1.83
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Predecir el precio de un carro: 
+Selling_Price=3.35,Year=2014
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Predecir el precio de un aguacate: 
+4400.25,1358.53,1735.98,0.0,1305.74,130.0,1175.74,0.0,0,2015
 
-### `npm run eject`
+4. Predecir la temperatura mínima del clima: 
+MaxTemp=34,Temp9am=27
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Predecir el seguro que debe pagar un empleador: 
+bmi=19
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. Clasificar si un cliente se va a pasar de compañía telefónica: 
+1,68.65,68.65,0
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+7. Clasificar un vino: 
+8.8,0.34,0.33,9.7,0.036,46.0,172.0,0.9966,3.08,0.4,10.2,1
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+8. Predecir la cantidad de inventario
+de la compañía: 
+4,19,2017,7,14,28,28,4,4,195,3
 
-## Learn More
+9. Predecir el precio de las acciones
+del mercado SP 500stock: 
+1000000
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+10. Predicir la masa corporal: 
+1.0708,93.1,85.2
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+11. Clasificar tipo de hepatits: 
+1,23,47.0,19.1,38.9,164.2,17.0,7.09,3.20,79.3,90.4,70.1
 
-### Code Splitting
+12. Clasificar si una persona tiene un derrame: 
+1,67.0,0,1,1,2,1,228.69,36.6,1
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Cómo ejecutarlo
 
-### Analyzing the Bundle Size
+Ejecutar los siguientes comandos:
+```
+npm install
+npm start
+```
+Nota: Para probarlo es necesario correr el [backend](https://github.com/SebastianRV26/JarvisTEC-BackEnd) creado con Django.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Integrantes:
+* [Ali Hashemi Shirkavand](https://github.com/AliHashemiS)
+* [Francisco Soto Quesada](https://github.com/franrsq)
+* [Jairo Pacheco Campos](https://github.com/JairoPacheco)
+* [Sebastián Rojas Vargas](https://github.com/SebastianRV26)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Curso: Inteligencia Artificial.
+I Semestre 2022.
+Profesor: Efrén Jimenez.
