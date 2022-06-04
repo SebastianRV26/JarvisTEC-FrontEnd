@@ -1,0 +1,46 @@
+.statusText {
+  margin-top: 0;
+  text-align: center;
+}
+
+.voiceText {
+  margin: 16px;
+}
+
+.recButton {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  font-size: 0;
+  background-color: crimson;
+  border: 0;
+  border-radius: 50%;
+  outline: none;
+  display: table;
+  margin: auto;
+  color: white;
+}
+
+.recButton:hover {
+  background-color: crimson !important;
+}
+
+.recButton:active {
+  background-color: crimson !important;
+}
+
+.recButton:hover:before {
+  transform: scale(1.15);
+}
+
+.recButton:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid crimson;
+  border-radius: 100%;
+  transition: all 160ms ease-in-out;
+}

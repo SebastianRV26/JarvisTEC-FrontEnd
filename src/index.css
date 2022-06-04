@@ -36,3 +36,48 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.text-center {
+  text-align: center;
+}
+
+input {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.5;
+  width: calc(100% - 150px);
+  padding: 6px 4px;
+  border: 1px solid var(--borderFormEls);
+  color: white;
+  background: #141117;
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+button {
+  display: inline;
+  margin: auto;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.5;
+  padding: 6px 10px;
+  border: 1px solid var(--borderFormEls);
+  color: white;
+  background: #141117;
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+input:focus,
+button:enabled:hover,
+button:focus {
+  background: #3b3242;
+}
+
+input:focus {
+  transform: scale(1.02);
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
