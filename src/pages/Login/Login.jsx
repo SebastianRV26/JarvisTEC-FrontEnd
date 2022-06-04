@@ -1,9 +1,10 @@
 import classes from "./Login.module.css";
 import React from "react";
 import Webcam from "react-webcam";
-import { findSimilar } from "../../faceID/FaceApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { env } from "../../env/config";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,14 +14,23 @@ const Login = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     fetch(imageSrc)
       .then((res) => res.blob())
-      .then((res) => findSimilar(res))
+      .then((res) => {
+        const formData = new FormData();
+        formData.append("data", res);
+        return axios.post(env.BACKEND_URL + "models/face/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      })
       .then((data) => {
-        if (data) {
+        console.log(data)
+        /*if (data) {
           toast.success("Bienvenido");
           navigate("/jarvis");
         } else {
           toast.warn("No se encontró el usuario");
-        }
+        }*/
       })
       .catch((err) => toast.error("Error desconocido"));
   }, [webcamRef]);

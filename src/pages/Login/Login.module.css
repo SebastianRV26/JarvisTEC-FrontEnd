@@ -35,6 +35,14 @@
   color: white;
 }
 
+.captureContainer button:hover {
+  background-color: crimson;
+}
+
+.captureContainer button:active {
+  background-color: crimson;
+}
+
 .captureContainer button:hover:before {
   transform: scale(1.15);
 }
