@@ -39,6 +39,7 @@ export async function findSimilar(photo) {
   const target_image_file_names = [
     "https://avatars.githubusercontent.com/u/79598781?s=400&u=ed720eb3c18823bcf779e15b641ee98a1b548c9b&v=4",
     "https://avatars.githubusercontent.com/u/49496463?v=4",
+    "https://avatars.githubusercontent.com/u/48835989?s=400&u=c8df0610fb52c4f6f478f948779314d508c08349&v=4",
   ];
 
   let target_face_ids = (

@@ -23,14 +23,14 @@ const Login = () => {
           },
         });
       })
-      .then((data) => {
-        console.log(data)
-        /*if (data) {
+      .then((res) => {
+        console.log(res)
+        if (res.data.data) {
           toast.success("Bienvenido");
-          navigate("/jarvis");
+          navigate("/home");
         } else {
           toast.warn("No se encontró el usuario");
-        }*/
+        }
       })
       .catch((err) => toast.error("Error desconocido"));
   }, [webcamRef]);

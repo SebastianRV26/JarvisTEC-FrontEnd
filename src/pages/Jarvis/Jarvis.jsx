@@ -8,6 +8,7 @@ import ModelInput from "../../components/ModelInput/ModelInput";
 import ModelOutput from "../../components/ModelOutput/ModelOutput";
 import AudioAnimation from "../../components/AudioAnimation/AudioAnimation";
 import Card from "../../components/Card/Card";
+import fixWebmDuration from "fix-webm-duration";
 import { useReactMediaRecorder } from "react-media-recorder";
 
 const isRecording = (status) => {
@@ -16,7 +17,7 @@ const isRecording = (status) => {
 
 const Jarvis = () => {
   const { status, startRecording, stopRecording, mediaBlobUrl } =
-    useReactMediaRecorder({ audio: true });
+    useReactMediaRecorder({ audio: true , blobPropertyBag: {type: "audio/wav"} });
   const { speak, speaking } = useSpeechSynthesis();
   const [action, setAction] = useState();
   const [result, setResult] = useState();
@@ -27,6 +28,9 @@ const Jarvis = () => {
       fetch(mediaBlobUrl)
         .then((res) => res.blob())
         .then((res) => {
+          return fixWebmDuration(res, 2000, {logger: false})
+        })
+        .then((res)=> {
           const formData = new FormData();
           formData.append("data", res);
           return axios.post(env.BACKEND_URL + "models/voice/", formData, {
